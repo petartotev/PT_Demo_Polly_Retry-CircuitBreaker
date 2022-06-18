@@ -23,7 +23,7 @@ namespace RequestService.Controllers
 
             //var response = await client.GetAsync(url);
 
-            var response = await _clientPolicy.LinearHttpRetry.ExecuteAsync(() => client.GetAsync(url));
+            var response = await _clientPolicy.ExponentialHttpRetry.ExecuteAsync(() => client.GetAsync(url));
 
             if (response.IsSuccessStatusCode)
             {
