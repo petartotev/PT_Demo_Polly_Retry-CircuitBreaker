@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using RequestService.Policies;
+//using RequestService.Policies;
 
 namespace RequestService.Controllers
 {
@@ -7,11 +7,13 @@ namespace RequestService.Controllers
     [Route("api/v1/[Controller]")]
     public class RequestController : ControllerBase
     {
-        private readonly ClientPolicy _clientPolicy;
+        private readonly IHttpClientFactory _clientFactory;
+        //private readonly ClientPolicy _clientPolicy;
 
-        public RequestController(ClientPolicy clientPolicy)
+        public RequestController(IHttpClientFactory clientFactory/*, ClientPolicy clientPolicy*/)
         {
-            _clientPolicy = clientPolicy;
+            _clientFactory = clientFactory;
+            //_clientPolicy = clientPolicy;
         }
 
         [HttpGet]
@@ -19,19 +21,26 @@ namespace RequestService.Controllers
         {
             var id = 25;
             var url = $"https://localhost:7000/api/v1/response/{id}";
-            var client = new HttpClient();
 
+            // 1 NO POLLY
+            //var client = new HttpClient();
             //var response = await client.GetAsync(url);
 
-            var response = await _clientPolicy.ExponentialHttpRetry.ExecuteAsync(() => client.GetAsync(url));
+            // 2 DIRECTLY INTRODUCED IN CONTROLLER
+            //var client = new HttpClient();
+            //var response = await _clientPolicy.ExponentialHttpRetry.ExecuteAsync(() => client.GetAsync(url));
+
+            // 3 CLEAN METHOD
+            var client = _clientFactory.CreateClient("TestClient");
+            var response = await client.GetAsync(url);
 
             if (response.IsSuccessStatusCode)
             {
-                Console.WriteLine("ResponseService returned SUCCESS!");
+                Console.WriteLine($"{DateTime.Now} | ResponseService returned SUCCESS!");
                 return Ok();
             }
 
-            Console.WriteLine("ResponseService returned FAILURE!");
+            Console.WriteLine($"{DateTime.Now} | ResponseService returned FAILURE!");
             return StatusCode(StatusCodes.Status500InternalServerError);
         }
     }

@@ -4,6 +4,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
+builder.Services.AddHttpClient("TestClient").AddPolicyHandler(
+    request => request.Method == HttpMethod.Get 
+    ? new ClientPolicy().LinearHttpRetry
+    : new ClientPolicy().ImmediateHttpRetry);
+
 builder.Services.AddSingleton<ClientPolicy>(new ClientPolicy());
 
 builder.Services.AddControllers();
