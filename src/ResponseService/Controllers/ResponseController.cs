@@ -18,6 +18,11 @@ namespace ResponseService.Controllers
                 Console.WriteLine($"{DateTime.Now} | Failure!");
                 return StatusCode(StatusCodes.Status500InternalServerError);
             }
+            //else
+            //{
+            //    Console.WriteLine($"{DateTime.Now} | Failure!");
+            //    return StatusCode(StatusCodes.Status500InternalServerError);
+            //}
 
             Console.WriteLine($"{DateTime.Now} | Success!");
             return Ok();

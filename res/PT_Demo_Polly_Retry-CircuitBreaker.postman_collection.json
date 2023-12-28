@@ -1,0 +1,351 @@
+{
+	"info": {
+		"_postman_id": "0017ca03-5a18-43ba-9fc5-4dcfc45eed96",
+		"name": "PT_Demo_Polly_Retry-CircuitBreaker",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23140527"
+	},
+	"item": [
+		{
+			"name": "RequestService",
+			"item": [
+				{
+					"name": "Make Request",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url-https-requestservice}}/api/v1/request",
+							"host": [
+								"{{url-https-requestservice}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"request"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url-https-requestservice}}/api/v1/request",
+									"host": [
+										"{{url-https-requestservice}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"request"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 26 Dec 2023 11:39:16 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"version\": \"1.1\",\n    \"content\": {\n        \"headers\": [\n            {\n                \"key\": \"Content-Length\",\n                \"value\": [\n                    \"0\"\n                ]\n            }\n        ]\n    },\n    \"statusCode\": 200,\n    \"reasonPhrase\": \"OK\",\n    \"headers\": [\n        {\n            \"key\": \"Date\",\n            \"value\": [\n                \"Tue, 26 Dec 2023 11:39:08 GMT\"\n            ]\n        },\n        {\n            \"key\": \"Server\",\n            \"value\": [\n                \"Kestrel\"\n            ]\n        }\n    ],\n    \"trailingHeaders\": [],\n    \"requestMessage\": {\n        \"version\": \"1.1\",\n        \"versionPolicy\": 0,\n        \"content\": null,\n        \"method\": {\n            \"method\": \"GET\"\n        },\n        \"requestUri\": \"https://localhost:7000/api/v1/response/25\",\n        \"headers\": [\n            {\n                \"key\": \"traceparent\",\n                \"value\": [\n                    \"00-08ce17af509bb4a8564d0ac7ec759b8f-22dd727a93cbec2d-00\"\n                ]\n            }\n        ],\n        \"properties\": {\n            \"PolicyExecutionContext\": null,\n            \"PolicyHttpMessageHandler.PriorResponse\": null\n        },\n        \"options\": {\n            \"PolicyExecutionContext\": null,\n            \"PolicyHttpMessageHandler.PriorResponse\": null\n        }\n    },\n    \"isSuccessStatusCode\": true\n}"
+						},
+						{
+							"name": "500 Internal Server Error",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:5000/api/v1/request",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"v1",
+										"request"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 26 Dec 2023 06:44:15 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "An error occurred: No connection could be made because the target machine actively refused it. (localhost:7000)"
+						},
+						{
+							"name": "500 Internal Server Error",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url-https-requestservice}}/api/v1/request",
+									"host": [
+										"{{url-https-requestservice}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"request"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 26 Dec 2023 11:24:02 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "An error occurred: The circuit is now open and is not allowing calls."
+						},
+						{
+							"name": "500 Internal Server Error",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url-https-requestservice}}/api/v1/request",
+									"host": [
+										"{{url-https-requestservice}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"request"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 26 Dec 2023 11:26:41 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "System.Text.Json.JsonException: A possible object cycle was detected. This can either be due to a cycle or if the object depth is larger than the maximum allowed depth of 32. Consider using ReferenceHandler.Preserve on JsonSerializerOptions to support cycles. Path: $.RequestMessage.Properties.RequestMessage.Properties.RequestMessage.Properties.RequestMessage.Properties.RequestMessage.Properties.RequestMessage.Properties.RequestMessage.Properties.RequestMessage.Properties.RequestMessage.Properties.Content.Headers.Value.\r\n   at System.Text.Json.ThrowHelper.ThrowJsonException_SerializerCycleDetected(Int32 maxDepth)\r\n   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.Converters.IEnumerableDefaultConverter`2.OnWriteResume(Utf8JsonWriter writer, TCollection value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.JsonCollectionConverter`2.OnTryWrite(Utf8JsonWriter writer, TCollection value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.Metadata.JsonPropertyInfo`1.GetMemberAndWriteJson(Object obj, WriteStack& state, Utf8JsonWriter writer)\r\n   at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryWrite(Utf8JsonWriter writer, T value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.Converters.IEnumerableDefaultConverter`2.OnWriteResume(Utf8JsonWriter writer, TCollection value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.JsonCollectionConverter`2.OnTryWrite(Utf8JsonWriter writer, TCollection value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.Metadata.JsonPropertyInfo`1.GetMemberAndWriteJson(Object obj, WriteStack& state, Utf8JsonWriter writer)\r\n   at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryWrite(Utf8JsonWriter writer, T value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.Metadata.JsonPropertyInfo`1.GetMemberAndWriteJson(Object obj, WriteStack& state, Utf8JsonWriter writer)\r\n   at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryWrite(Utf8JsonWriter writer, T value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.JsonConverter`1.TryWriteAsObject(Utf8JsonWriter writer, Object value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.Converters.DictionaryDefaultConverter`3.OnWriteResume(Utf8JsonWriter writer, TDictionary value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.JsonDictionaryConverter`3.OnTryWrite(Utf8JsonWriter writer, TDictionary dictionary, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.Metadata.JsonPropertyInfo`1.GetMemberAndWriteJson(Object obj, WriteStack& state, Utf8JsonWriter writer)\r\n   at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryWrite(Utf8JsonWriter writer, T value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.Metadata.JsonPropertyInfo`1.GetMemberAndWriteJson(Object obj, WriteStack& state, Utf8JsonWriter writer)\r\n   at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryWrite(Utf8JsonWriter writer, T value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.JsonConverter`1.TryWriteAsObject(Utf8JsonWriter writer, Object value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.Converters.DictionaryDefaultConverter`3.OnWriteResume(Utf8JsonWriter writer, TDictionary value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.JsonDictionaryConverter`3.OnTryWrite(Utf8JsonWriter writer, TDictionary dictionary, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.Metadata.JsonPropertyInfo`1.GetMemberAndWriteJson(Object obj, WriteStack& state, Utf8JsonWriter writer)\r\n   at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryWrite(Utf8JsonWriter writer, T value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.Metadata.JsonPropertyInfo`1.GetMemberAndWriteJson(Object obj, WriteStack& state, Utf8JsonWriter writer)\r\n   at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryWrite(Utf8JsonWriter writer, T value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.JsonConverter`1.TryWriteAsObject(Utf8JsonWriter writer, Object value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.Converters.DictionaryDefaultConverter`3.OnWriteResume(Utf8JsonWriter writer, TDictionary value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.JsonDictionaryConverter`3.OnTryWrite(Utf8JsonWriter writer, TDictionary dictionary, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.Metadata.JsonPropertyInfo`1.GetMemberAndWriteJson(Object obj, WriteStack& state, Utf8JsonWriter writer)\r\n   at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryWrite(Utf8JsonWriter writer, T value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.Metadata.JsonPropertyInfo`1.GetMemberAndWriteJson(Object obj, WriteStack& state, Utf8JsonWriter writer)\r\n   at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryWrite(Utf8JsonWriter writer, T value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.JsonConverter`1.TryWriteAsObject(Utf8JsonWriter writer, Object value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.Converters.DictionaryDefaultConverter`3.OnWriteResume(Utf8JsonWriter writer, TDictionary value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.JsonDictionaryConverter`3.OnTryWrite(Utf8JsonWriter writer, TDictionary dictionary, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.Metadata.JsonPropertyInfo`1.GetMemberAndWriteJson(Object obj, WriteStack& state, Utf8JsonWriter writer)\r\n   at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryWrite(Utf8JsonWriter writer, T value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.Metadata.JsonPropertyInfo`1.GetMemberAndWriteJson(Object obj, WriteStack& state, Utf8JsonWriter writer)\r\n   at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryWrite(Utf8JsonWriter writer, T value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.JsonConverter`1.TryWriteAsObject(Utf8JsonWriter writer, Object value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.Converters.DictionaryDefaultConverter`3.OnWriteResume(Utf8JsonWriter writer, TDictionary value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.JsonDictionaryConverter`3.OnTryWrite(Utf8JsonWriter writer, TDictionary dictionary, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.Metadata.JsonPropertyInfo`1.GetMemberAndWriteJson(Object obj, WriteStack& state, Utf8JsonWriter writer)\r\n   at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryWrite(Utf8JsonWriter writer, T value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.Metadata.JsonPropertyInfo`1.GetMemberAndWriteJson(Object obj, WriteStack& state, Utf8JsonWriter writer)\r\n   at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryWrite(Utf8JsonWriter writer, T value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.JsonConverter`1.TryWriteAsObject(Utf8JsonWriter writer, Object value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.Converters.DictionaryDefaultConverter`3.OnWriteResume(Utf8JsonWriter writer, TDictionary value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.JsonDictionaryConverter`3.OnTryWrite(Utf8JsonWriter writer, TDictionary dictionary, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.Metadata.JsonPropertyInfo`1.GetMemberAndWriteJson(Object obj, WriteStack& state, Utf8JsonWriter writer)\r\n   at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryWrite(Utf8JsonWriter writer, T value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.Metadata.JsonPropertyInfo`1.GetMemberAndWriteJson(Object obj, WriteStack& state, Utf8JsonWriter writer)\r\n   at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryWrite(Utf8JsonWriter writer, T value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.JsonConverter`1.TryWriteAsObject(Utf8JsonWriter writer, Object value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.Converters.DictionaryDefaultConverter`3.OnWriteResume(Utf8JsonWriter writer, TDictionary value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.JsonDictionaryConverter`3.OnTryWrite(Utf8JsonWriter writer, TDictionary dictionary, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.Metadata.JsonPropertyInfo`1.GetMemberAndWriteJson(Object obj, WriteStack& state, Utf8JsonWriter writer)\r\n   at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryWrite(Utf8JsonWriter writer, T value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.Metadata.JsonPropertyInfo`1.GetMemberAndWriteJson(Object obj, WriteStack& state, Utf8JsonWriter writer)\r\n   at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryWrite(Utf8JsonWriter writer, T value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.JsonConverter`1.TryWriteAsObject(Utf8JsonWriter writer, Object value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.Converters.DictionaryDefaultConverter`3.OnWriteResume(Utf8JsonWriter writer, TDictionary value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.JsonDictionaryConverter`3.OnTryWrite(Utf8JsonWriter writer, TDictionary dictionary, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.Metadata.JsonPropertyInfo`1.GetMemberAndWriteJson(Object obj, WriteStack& state, Utf8JsonWriter writer)\r\n   at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryWrite(Utf8JsonWriter writer, T value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.Metadata.JsonPropertyInfo`1.GetMemberAndWriteJson(Object obj, WriteStack& state, Utf8JsonWriter writer)\r\n   at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryWrite(Utf8JsonWriter writer, T value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.JsonConverter`1.TryWriteAsObject(Utf8JsonWriter writer, Object value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.Converters.DictionaryDefaultConverter`3.OnWriteResume(Utf8JsonWriter writer, TDictionary value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.JsonDictionaryConverter`3.OnTryWrite(Utf8JsonWriter writer, TDictionary dictionary, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.Metadata.JsonPropertyInfo`1.GetMemberAndWriteJson(Object obj, WriteStack& state, Utf8JsonWriter writer)\r\n   at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryWrite(Utf8JsonWriter writer, T value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.Metadata.JsonPropertyInfo`1.GetMemberAndWriteJson(Object obj, WriteStack& state, Utf8JsonWriter writer)\r\n   at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryWrite(Utf8JsonWriter writer, T value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.JsonConverter`1.WriteCore(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.Serialization.JsonConverter`1.WriteCoreAsObject(Utf8JsonWriter writer, Object value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.JsonSerializer.WriteCore[TValue](JsonConverter jsonConverter, Utf8JsonWriter writer, TValue& value, JsonSerializerOptions options, WriteStack& state)\r\n   at System.Text.Json.JsonSerializer.WriteStreamAsync[TValue](Stream utf8Json, TValue value, JsonTypeInfo jsonTypeInfo, CancellationToken cancellationToken)\r\n   at System.Text.Json.JsonSerializer.WriteStreamAsync[TValue](Stream utf8Json, TValue value, JsonTypeInfo jsonTypeInfo, CancellationToken cancellationToken)\r\n   at System.Text.Json.JsonSerializer.WriteStreamAsync[TValue](Stream utf8Json, TValue value, JsonTypeInfo jsonTypeInfo, CancellationToken cancellationToken)\r\n   at Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter.WriteResponseBodyAsync(OutputFormatterWriteContext context, Encoding selectedEncoding)\r\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResultFilterAsync>g__Awaited|30_0[TFilter,TFilterAsync](ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)\r\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)\r\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)\r\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()\r\n--- End of stack trace from previous location ---\r\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)\r\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)\r\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)\r\n   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)\r\n   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)\r\n   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)\r\n   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)\r\n   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)\r\n\r\nHEADERS\r\n=======\r\nAccept: */*\r\nConnection: keep-alive\r\nHost: localhost:5000\r\nUser-Agent: PostmanRuntime/7.36.0\r\nAccept-Encoding: gzip, deflate, br\r\nPostman-Token: 0c062d8c-277a-4817-b949-4e35493e9a1d\r\n"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "ResponseService",
+			"item": [
+				{
+					"name": "Get Response",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url-https-responseservice}}/api/v1/Response/50",
+							"host": [
+								"{{url-https-responseservice}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"Response",
+								"50"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url-https-responseservice}}/api/v1/Response/50",
+									"host": [
+										"{{url-https-responseservice}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"Response",
+										"50"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Content-Length",
+									"value": "0"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 26 Dec 2023 11:27:58 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								}
+							],
+							"cookie": [],
+							"body": null
+						},
+						{
+							"name": "500 Internal Server Error",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:7000/api/v1/Response/33",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7000",
+									"path": [
+										"api",
+										"v1",
+										"Response",
+										"33"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/problem+json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 26 Dec 2023 11:20:01 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"type\": \"https://tools.ietf.org/html/rfc7231#section-6.6.1\",\n    \"title\": \"An error occurred while processing your request.\",\n    \"status\": 500,\n    \"traceId\": \"00-fe09cef77c0dac144d1570f9119df4ff-9e0eab1d27e79678-00\"\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url-https-requestservice",
+			"value": "https://localhost:5000",
+			"type": "string"
+		},
+		{
+			"key": "url-http-requestservice",
+			"value": "https://localhost:5001",
+			"type": "string"
+		},
+		{
+			"key": "url-https-responseservice",
+			"value": "https://localhost:7000",
+			"type": "string"
+		},
+		{
+			"key": "url-http-responseservice",
+			"value": "https://localhost:7001",
+			"type": "string"
+		}
+	]
+}

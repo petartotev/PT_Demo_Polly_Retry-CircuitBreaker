@@ -1,4 +1,5 @@
 ﻿using Polly;
+using Polly.Extensions.Http;
 using Polly.Retry;
 
 namespace RequestService.Policies
@@ -10,6 +11,8 @@ namespace RequestService.Policies
         public AsyncRetryPolicy<HttpResponseMessage> LinearHttpRetry { get; }
         
         public AsyncRetryPolicy<HttpResponseMessage> ExponentialHttpRetry { get; }
+
+        public IAsyncPolicy<HttpResponseMessage> CircuitBreakerPolicy { get; }
 
         public ClientPolicy()
         {
@@ -24,6 +27,10 @@ namespace RequestService.Policies
             ExponentialHttpRetry = Policy
                 .HandleResult<HttpResponseMessage>(res => !res.IsSuccessStatusCode)
                 .WaitAndRetryAsync(5, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)));
+
+            CircuitBreakerPolicy = HttpPolicyExtensions
+                .HandleTransientHttpError()
+                .CircuitBreakerAsync(3, TimeSpan.FromSeconds(30));
         }
     }
 }

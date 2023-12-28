@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Net.Http;
 //using RequestService.Policies;
 
 namespace RequestService.Controllers
@@ -7,12 +8,12 @@ namespace RequestService.Controllers
     [Route("api/v1/[Controller]")]
     public class RequestController : ControllerBase
     {
-        private readonly IHttpClientFactory _clientFactory;
+        private readonly IHttpClientFactory _httpClientFactory;
         //private readonly ClientPolicy _clientPolicy;
 
-        public RequestController(IHttpClientFactory clientFactory/*, ClientPolicy clientPolicy*/)
+        public RequestController(IHttpClientFactory httpClientFactory/*, ClientPolicy clientPolicy*/)
         {
-            _clientFactory = clientFactory;
+            _httpClientFactory = httpClientFactory;
             //_clientPolicy = clientPolicy;
         }
 
@@ -31,17 +32,34 @@ namespace RequestService.Controllers
             //var response = await _clientPolicy.ExponentialHttpRetry.ExecuteAsync(() => client.GetAsync(url));
 
             // 3 CLEAN METHOD
-            var client = _clientFactory.CreateClient("TestClient");
-            var response = await client.GetAsync(url);
+            //var client = _httpClientFactory.CreateClient("TestClient");
+            //var response = await client.GetAsync(url);
 
-            if (response.IsSuccessStatusCode)
+            //if (response.IsSuccessStatusCode)
+            //{
+            //    Console.WriteLine($"{DateTime.Now} | ResponseService returned SUCCESS!");
+            //    return Ok();
+            //}
+
+            //Console.WriteLine($"{DateTime.Now} | ResponseService returned FAILURE!");
+            //return StatusCode(StatusCodes.Status500InternalServerError);
+
+            // 4 CIRCUIT BREAKER
+            var client = _httpClientFactory.CreateClient("TestClient");
+
+            try
             {
-                Console.WriteLine($"{DateTime.Now} | ResponseService returned SUCCESS!");
-                return Ok();
-            }
+                var response = await client.GetAsync(url);
 
-            Console.WriteLine($"{DateTime.Now} | ResponseService returned FAILURE!");
-            return StatusCode(StatusCodes.Status500InternalServerError);
+                // Process the response as needed
+
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                // Handle the exception or return an error response
+                return StatusCode(500, $"An error occurred: {ex.Message}");
+            }
         }
     }
 }
