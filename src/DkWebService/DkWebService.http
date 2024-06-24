@@ -1,0 +1,6 @@
+@DkWebService_HostAddress = http://localhost:5023
+
+GET {{DkWebService_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
