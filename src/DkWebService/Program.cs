@@ -12,6 +12,7 @@ public class Program
 
         // Add services to the container.
         builder.Services.AddSingleton<IOdysseusClient, OdysseusClient>();
+        builder.Services.AddSingleton<IAgamemnonClient, AgamemnonClient>();
 
         builder.Services.AddControllers();
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
