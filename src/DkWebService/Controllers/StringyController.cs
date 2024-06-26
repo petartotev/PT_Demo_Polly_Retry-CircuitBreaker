@@ -21,7 +21,7 @@ public class StringyController : ControllerBase
         _logger = logger;
         _odysseusClient = odysseusClient;
         _perseusClient = perseusClient;
-
+        _agamemnonClient = agamemnonClient;
     }
 
     [HttpGet("GetStringyStrings")]
@@ -38,5 +38,13 @@ public class StringyController : ControllerBase
         var inty = await _agamemnonClient.GetCalculationsByAgamemnonApiAsync(eventId);
 
         return inty;
+    }
+
+    [HttpGet("GetIfFraud")]
+    public async Task<bool> GetIfFraud(int depositId)
+    {
+        var booly = await _perseusClient.CheckIfDepositIsFraudAsync(depositId);
+
+        return booly;
     }
 }

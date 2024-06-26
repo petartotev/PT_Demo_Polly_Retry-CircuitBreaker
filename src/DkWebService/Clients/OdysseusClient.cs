@@ -2,6 +2,7 @@
 
 namespace DkWebService.EndPoint.Clients;
 
+// EXPONENTIAL RETRY
 public class OdysseusClient : BaseClient, IOdysseusClient
 {
     public OdysseusClient(IConfiguration configuration, ILogger<OdysseusClient> logger)
@@ -39,7 +40,7 @@ public class OdysseusClient : BaseClient, IOdysseusClient
         }
     }
 
-    private async Task<string[]> DoSomeBusinessThingAsync()
+    private static async Task<string[]> DoSomeBusinessThingAsync()
     {
         var str = new string[] { "Business", " ", "is", " ", "done", "!" };
 

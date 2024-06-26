@@ -1,7 +1,6 @@
-﻿namespace DkWebService.EndPoint.Clients.Interfaces
+﻿namespace DkWebService.EndPoint.Clients.Interfaces;
+
+public interface IAgamemnonClient
 {
-    public interface IAgamemnonClient
-    {
-        Task<int> GetCalculationsByAgamemnonApiAsync(int eventId);
-    }
+    Task<int> GetCalculationsByAgamemnonApiAsync(int eventId);
 }

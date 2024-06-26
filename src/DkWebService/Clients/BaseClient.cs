@@ -2,6 +2,7 @@
 
 namespace DkWebService.EndPoint.Clients;
 
+// EXPONENTIAL RETRY
 public abstract class BaseClient
 {
     protected BaseClient(IConfiguration configuration, ILogger<BaseClient> logger)
@@ -15,6 +16,7 @@ public abstract class BaseClient
     protected ILogger<BaseClient> Logger { get; init; }
     protected IAsyncPolicy RetryPolicy { get; set; }
 
+    // EXPONENTIAL RETRY
     protected virtual IAsyncPolicy SetupRetryPolicy()
     {
         var result = Policy.Handle<Exception>()

@@ -1,7 +1,6 @@
-﻿namespace DkWebService.EndPoint.Clients.Interfaces
+﻿namespace DkWebService.EndPoint.Clients.Interfaces;
+
+public interface IPerseusClient
 {
-    public interface IPerseusClient
-    {
-        Task<bool> CheckIfDepositIsFraudAsync(int depositId);
-    }
+    Task<bool> CheckIfDepositIsFraudAsync(int depositId);
 }
