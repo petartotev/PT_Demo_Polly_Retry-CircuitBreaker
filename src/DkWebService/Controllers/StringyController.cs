@@ -10,21 +10,24 @@ public class StringyController : ControllerBase
     private readonly ILogger<StringyController> _logger;
     private readonly IOdysseusClient _odysseusClient;
     private readonly IAgamemnonClient _agamemnonClient;
+    private readonly IPerseusClient _perseusClient;
 
     public StringyController(
         ILogger<StringyController> logger,
         IOdysseusClient odysseusClient,
-        IAgamemnonClient agamemnonClient)
+        IAgamemnonClient agamemnonClient,
+        IPerseusClient perseusClient)
     {
         _logger = logger;
         _odysseusClient = odysseusClient;
-        _agamemnonClient = agamemnonClient;
+        _perseusClient = perseusClient;
+
     }
 
     [HttpGet("GetStringyStrings")]
     public async Task<IEnumerable<string>> GetSomeStrings(int userId)
     {
-        var strings = await _odysseusClient.GetSomethingFromTheOutsideWorld(userId);
+        var strings = await _odysseusClient.GetSomethingFromTheOutsideWorldAsync(userId);
 
         return strings;
     }
@@ -32,7 +35,7 @@ public class StringyController : ControllerBase
     [HttpGet("GetRandomInteger")]
     public async Task<int> GetSomeInteger(int eventId)
     {
-        var inty = await _agamemnonClient.GetCalculationsByAgamemnonApi(eventId);
+        var inty = await _agamemnonClient.GetCalculationsByAgamemnonApiAsync(eventId);
 
         return inty;
     }

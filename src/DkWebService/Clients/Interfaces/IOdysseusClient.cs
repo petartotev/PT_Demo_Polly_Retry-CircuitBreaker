@@ -2,5 +2,5 @@
 
 public interface IOdysseusClient
 {
-    Task<string[]> GetSomethingFromTheOutsideWorld(int userId);
+    Task<string[]> GetSomethingFromTheOutsideWorldAsync(int userId);
 }

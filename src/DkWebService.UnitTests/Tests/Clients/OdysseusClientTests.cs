@@ -37,7 +37,7 @@ public class OdysseusClientTests : TestsBase
         var sut = new OdysseusClient(configuration, _loggerMock.Object);
 
         // Act
-        Assert.ThrowsAsync<ArgumentException>(() => sut.GetSomethingFromTheOutsideWorld(-1));
+        Assert.ThrowsAsync<ArgumentException>(() => sut.GetSomethingFromTheOutsideWorldAsync(-1));
 
         // Assert
         _loggerMock.Invocations.Count.Should().Be(2 + 1);
@@ -73,7 +73,7 @@ public class OdysseusClientTests : TestsBase
         var sut = new OdysseusClient(configuration, _loggerMock.Object);
 
         // Act
-        Assert.ThrowsAsync<ArgumentException>(() => sut.GetSomethingFromTheOutsideWorld(-1));
+        Assert.ThrowsAsync<ArgumentException>(() => sut.GetSomethingFromTheOutsideWorldAsync(-1));
 
         // Assert
         _loggerMock.Invocations.Count.Should().Be(3 + 1);
@@ -112,7 +112,7 @@ public class OdysseusClientTests : TestsBase
         var sut = new OdysseusClient(configuration, _loggerMock.Object);
 
         // Act
-        Assert.ThrowsAsync<ArgumentException>(() => sut.GetSomethingFromTheOutsideWorld(-1));
+        Assert.ThrowsAsync<ArgumentException>(() => sut.GetSomethingFromTheOutsideWorldAsync(-1));
 
         // Assert
         _loggerMock.Invocations.Count.Should().Be(5 + 1);
@@ -157,7 +157,7 @@ public class OdysseusClientTests : TestsBase
         var sut = new OdysseusClient(configuration, _loggerMock.Object);
 
         // Act
-        Assert.ThrowsAsync<ArgumentException>(() => sut.GetSomethingFromTheOutsideWorld(-1));
+        Assert.ThrowsAsync<ArgumentException>(() => sut.GetSomethingFromTheOutsideWorldAsync(-1));
 
         // Assert
         _loggerMock.Invocations.Count.Should().Be(5 + 1);

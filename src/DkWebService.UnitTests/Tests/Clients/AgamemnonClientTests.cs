@@ -38,7 +38,7 @@ namespace DkWebService.UnitTests.Tests.Clients
             var sut = new AgamemnonClient(configuration, _loggerMock.Object);
 
             // Act
-            Assert.ThrowsAsync<ArgumentException>(() => sut.GetCalculationsByAgamemnonApi(123));
+            Assert.ThrowsAsync<ArgumentException>(() => sut.GetCalculationsByAgamemnonApiAsync(123));
 
             // Assert
             _loggerMock.Invocations.Count.Should().Be(2 + 1);
@@ -77,7 +77,7 @@ namespace DkWebService.UnitTests.Tests.Clients
 
             // Act
             timer.Start();
-            Assert.ThrowsAsync<ArgumentException>(() => sut.GetCalculationsByAgamemnonApi(123));
+            Assert.ThrowsAsync<ArgumentException>(() => sut.GetCalculationsByAgamemnonApiAsync(123));
             timer.Stop();
 
             // Assert

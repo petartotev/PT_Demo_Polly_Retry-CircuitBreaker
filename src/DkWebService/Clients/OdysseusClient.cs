@@ -9,7 +9,7 @@ public class OdysseusClient : BaseClient, IOdysseusClient
     {
     }
 
-    public async Task<string[]> GetSomethingFromTheOutsideWorld(int userId)
+    public async Task<string[]> GetSomethingFromTheOutsideWorldAsync(int userId)
     {
         try
         {
@@ -24,14 +24,14 @@ public class OdysseusClient : BaseClient, IOdysseusClient
                     var response = await DoSomeBusinessThingAsync();
                     return response;
                 },
-                $"{nameof(OdysseusClient)}.{nameof(GetSomethingFromTheOutsideWorld)}");
+                $"{nameof(OdysseusClient)}.{nameof(GetSomethingFromTheOutsideWorldAsync)}");
         }
         catch (Exception e)
         {
             Logger.LogError(
                 e,
                 "[{Method}] - Failed to get strings for User {UserId} from Odysseus. Some AppSettings value: {SomeAppSettingValue}.",
-                $"{nameof(OdysseusClient)}.{nameof(GetSomethingFromTheOutsideWorld)}",
+                $"{nameof(OdysseusClient)}.{nameof(GetSomethingFromTheOutsideWorldAsync)}",
                 userId,
                 Configuration.GetValue<string>("SomeAppSettingValue"));
 

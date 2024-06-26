@@ -12,7 +12,7 @@ namespace DkWebService.EndPoint.Clients
         {
         }
 
-        public async Task<int> GetCalculationsByAgamemnonApi(int eventId)
+        public async Task<int> GetCalculationsByAgamemnonApiAsync(int eventId)
         {
             try
             {
@@ -27,14 +27,14 @@ namespace DkWebService.EndPoint.Clients
                         var response = await DoSomeCalculationAsync();
                         return response;
                     },
-                    $"{nameof(AgamemnonClient)}.{nameof(GetCalculationsByAgamemnonApi)}");
+                    $"{nameof(AgamemnonClient)}.{nameof(GetCalculationsByAgamemnonApiAsync)}");
             }
             catch (Exception e)
             {
                 Logger.LogError(
                     e,
                     "[{Method}] - Failed to get int for Event {EventId} from Agamemnon. Some AppSettings value: {SomeAppSettingValue}.",
-                    $"{nameof(AgamemnonClient)}.{nameof(GetCalculationsByAgamemnonApi)}",
+                    $"{nameof(AgamemnonClient)}.{nameof(GetCalculationsByAgamemnonApiAsync)}",
                     eventId,
                     Configuration.GetValue<string>("SomeAppSettingValue"));
 

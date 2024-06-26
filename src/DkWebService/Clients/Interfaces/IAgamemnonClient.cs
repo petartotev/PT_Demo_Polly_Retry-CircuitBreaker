@@ -2,6 +2,6 @@
 {
     public interface IAgamemnonClient
     {
-        Task<int> GetCalculationsByAgamemnonApi(int eventId);
+        Task<int> GetCalculationsByAgamemnonApiAsync(int eventId);
     }
 }
