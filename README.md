@@ -6,13 +6,23 @@ Salute for the demo on Retry policies, Les Jackson!<br>
 https://www.youtube.com/watch?v=DSMdUvL8N30
 
 ## Contents
-- [Initial Setup](#initial-setup)
-- [Retry Policy](#retry-policy)
-- [Circuit Breaker](#circuit-breaker)
+- [Original Demo](#original-demo)
+    - [Initial Setup](#initial-setup)
+    - [Retry Policy](#retry-policy)
+    - [Circuit Breaker](#circuit-breaker)
+- [DK Demo](#dk-demo)
+    - [Initial Setup](#initial-setup-1)
+    - [BaseClient](#baseclient)
+    - [OdysseusClient - EXPONENTIAL RETRY](#odysseusclient-exponential-retry)
+    - [AgamemnonClient - LINEAR RETRY](#agamemnonclient-linear-retry)
+    - [PerseusClient - IMMEDIATE RETRY](#perseusclient-immediate-retry)
+    - [Test](#test)
 - [Known Issues](#known-issues)
 - [Links](#links)
 
-## Initial Setup
+## Original Demo
+
+### Initial Setup
 
 Create a blank .NET Solution `PT_Demo_Polly` which contains 2 .NET 6 Web API projects:
 - `RequestService`
@@ -23,7 +33,7 @@ Create a blank .NET Solution `PT_Demo_Polly` which contains 2 .NET 6 Web API pro
 - `ResponseService`
     - Implement `ResponseController.cs` with `[GET] Get Response` endpoint
 
-## Retry Policy
+### Retry Policy
 
 See implementation in `Program.cs`, `ClientPolicy.cs` and `RequestController.cs`.
 
@@ -32,7 +42,7 @@ There are 3 types of Retry mechanisms implemented in `ClientPolicy.cs`:
 - LinearHttpRetry
 - ExponentialHttpRetry
 
-## Circuit Breaker
+### Circuit Breaker
 
 1. In `ClientPolicy.cs`, add the following:
 
@@ -144,6 +154,37 @@ app.Run();
             }
         }
 ```
+
+## DK Demo
+
+### Initial Setup
+
+Either create or use existing .NET Solution `PT_Demo_Polly` and add the following Projects:
+- `DKWebService.EndPoint`
+    - Add NuGet `Microsoft.Extensions.Http.Polly` (8.0.6 or higher)
+- `DKWebService.UnitTests`
+    - Add NuGet `FluentAssertions` (6.12.0 or higher)
+    - Add NuGet `Moq` (4.20.70 or higher)
+
+### BaseClient
+
+Implement BaseClient.
+
+### OdysseusClient (EXPONENTIAL RETRY)
+
+Implement `OdysseusClient` which inherits from `BaseClient` and uses its virtual `SetupRetryPolicy` method without overriding it in order to use EXPONENTIAL RETRY.
+
+### AgamemnonClient (LINEAR RETRY)
+
+Implement `AgamemnonClient` which inherits from `BaseClient`, but overrides its virtual `SetupRetryPolicy` in order to use LINEAR RETRY.
+
+### PerseusClient (IMMEDIATE RETRY)
+
+Implement `PerseusClient` which inherits from `BaseClient`, but overrides its virtual `SetupRetryPolicy` in order to use IMMEDIATE RETRY.
+
+### Test
+
+Test through the `StringyController` by calling its GET endpoints.
 
 ## Known Issues
 
